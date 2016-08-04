@@ -1,0 +1,22 @@
+name: CustomMotdManager
+version: 1.0.1
+main: net.unlimi_server.custommotdmanager.CustomMotdManager
+author: fumyatan
+website: http://unlimi-server.net
+
+commands:
+   cmm:
+      description: To manipulate the Motd.
+      usage: /<command>
+   custommotdmanager:
+      description: To manipulate the Motd.
+      usage: /<command>
+
+Permissions:
+  CMM.*:
+    description: To manipulate the Motd.
+    children:
+        CMM.help: true
+        CMM.getmotd: true
+        CMM.addmotd: true
+        CMM.remmotd: true
