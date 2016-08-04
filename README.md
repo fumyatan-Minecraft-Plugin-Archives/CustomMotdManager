@@ -1,0 +1,2 @@
+# CustomMotdManager
+Motd表示をカスタムするプラグイン
