@@ -28,6 +28,7 @@ public class CommandManager implements CommandExecutor {
 				sender.sendMessage("/cmm GetMotd: 設定されているMotdを表示します");
 				sender.sendMessage("/cmm addMotd: Motdを追加します");
 				sender.sendMessage("/cmm remMotd: Motdを削除します");
+				sender.sendMessage("/cmm reload: Configをリロードします");
 				return true;
 			}
 			else {
@@ -53,8 +54,13 @@ public class CommandManager implements CommandExecutor {
 		}
 		else if (args[0].equalsIgnoreCase("addMotd")){
 			if (sender.hasPermission("CMM.addmotd")){
+				StringBuilder motd = new StringBuilder();
+				for (int i = 1; i<args.length; i++){
+					motd.append(args[i] + " ");
+				}
+
 				List<String> Motd_l = CustomMotdManager.plugin.getConfig().getStringList("Motd");
-				Motd_l.add(args[1]);
+				Motd_l.add(motd.toString());
 				CustomMotdManager.plugin.getConfig().set("Motd", Motd_l);
 				CustomMotdManager.plugin.saveConfig();
 				sender.sendMessage(ChatColor.GREEN + "Success!");
@@ -72,6 +78,16 @@ public class CommandManager implements CommandExecutor {
 				CustomMotdManager.plugin.getConfig().set("Motd", Motd_l);
 				CustomMotdManager.plugin.saveConfig();
 				sender.sendMessage(ChatColor.GREEN + "Success!");
+				return true;
+			} else {
+				sender.sendMessage(ChatColor.RED + "You don't have Permission");
+				return true;
+			}
+		}
+		else if (args[0].equals("reload")){
+			if (sender.hasPermission("CMM.reload")){
+				CustomMotdManager.plugin.reloadConfig();
+				sender.sendMessage(ChatColor.GREEN + "Configをリロードしました");
 				return true;
 			} else {
 				sender.sendMessage(ChatColor.RED + "You don't have Permission");
