@@ -3,11 +3,11 @@ package net.unlimi_server.custommotdmanager.listener;
 import java.util.Collections;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
 
-import net.md_5.bungee.api.ChatColor;
 import net.unlimi_server.custommotdmanager.CustomMotdManager;
 
 public class PingEventListener implements Listener {
