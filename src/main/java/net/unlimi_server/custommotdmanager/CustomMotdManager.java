@@ -14,14 +14,14 @@ public class CustomMotdManager extends JavaPlugin {
 	public void onEnable(){
 		plugin = this;
 		getServer().getPluginManager().registerEvents(new PingEventListener(), this);
-		getCommand("cmm").setExecutor(new CommandManager());
 		getCommand("custommotdmanager").setExecutor(new CommandManager());
 		saveDefaultConfig();
+		MotdConfig.loadConfig();
 	}
 
 	@Override
 	public void onDisable(){
-
+		MotdConfig.saveConfig();
 	}
 
 }

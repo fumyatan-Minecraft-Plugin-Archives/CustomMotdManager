@@ -5,18 +5,14 @@ author: fumyatan
 website: https://fumyatan.net
 
 commands:
-  cmm:
-    description: To manipulate the Motd.
-    usage: /<command>
   custommotdmanager:
     description: To manipulate the Motd.
-    usage: /<command>
+    aliases: [cmm]
 
 Permissions:
-  CMM.*:
-    description: To manipulate the Motd.
+  cmm.*:
     children:
-      CMM.help: true
-      CMM.getmotd: true
-      CMM.addmotd: true
-      CMM.remmotd: true
+      cmm.help: true
+      cmm.getmotd: true
+      cmm.addmotd: true
+      cmm.remmotd: true
