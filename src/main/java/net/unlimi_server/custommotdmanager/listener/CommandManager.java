@@ -19,7 +19,7 @@ public class CommandManager implements CommandExecutor {
 			return true;
 		}
 		else if (args[0].equals("help")){
-			if (sender.hasPermission("CMM.help")){
+			if (sender.hasPermission("cmm.help")){
 				sender.sendMessage(ChatColor.GOLD + "========CustomMotdManager Help========");
 				sender.sendMessage("/cmm getmotd: 設定されているMotdを表示します");
 				sender.sendMessage("/cmm addmotd: Motdを追加します");
@@ -31,7 +31,7 @@ public class CommandManager implements CommandExecutor {
 			}
 		}
 		else if (args[0].equalsIgnoreCase("getmotd")){
-			if (sender.hasPermission("CMM.getmotd")){
+			if (sender.hasPermission("cmm.getmotd")){
 				int i = 0;
 				for (String Motd: Motd_l){
 					sender.sendMessage(i + ": " + ChatColor.translateAlternateColorCodes('&', Motd));

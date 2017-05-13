@@ -22,9 +22,9 @@ public class MotdConfig {
 		plugin.reloadConfig();
 		List<String> cmotd = plugin.getConfig().getStringList("Motd");
 
-		for (String motd : Motd_l){
-			if (!cmotd.contains(motd)){
-				cmotd.add(motd);
+		for (String motd : cmotd){
+			if (!Motd_l.contains(motd)){
+				Motd_l.add(motd);
 			}
 		}
 
