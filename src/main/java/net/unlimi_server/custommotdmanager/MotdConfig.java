@@ -1,36 +1,29 @@
 package net.unlimi_server.custommotdmanager;
 
-import static net.unlimi_server.custommotdmanager.CustomMotdManager.*;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 public class MotdConfig {
+	private FileConfiguration config;
+	private List<String> motdList = new ArrayList<>();
 
-	public static List<String> Motd_l = new ArrayList<String>();
+	public void reloadConfig() {
+		CustomMotdManager.getInstance().reloadConfig();
+		config = CustomMotdManager.getInstance().getConfig();
 
-	public static void loadConfig(){
-		Motd_l = plugin.getConfig().getStringList("Motd");
+		motdList = config.getStringList("Motd");
+		CustomMotdManager.getInstance().getLogger().log(Level.INFO, "Loaded Motds: \n" + String.join("\n", motdList));
 	}
 
-	public static void saveConfig(){
-		plugin.getConfig().set("Motd", Motd_l);
-		plugin.saveConfig();
+	public List<String> getMotdList() {
+		return motdList;
 	}
 
-	public static void reloadConfig(){
-		plugin.reloadConfig();
-		List<String> cmotd = plugin.getConfig().getStringList("Motd");
-
-		for (String motd : cmotd){
-			if (!Motd_l.contains(motd)){
-				Motd_l.add(motd);
-			}
-		}
-
-		plugin.getConfig().set("Motd", Motd_l);
-		plugin.saveConfig();
-
-		Motd_l = plugin.getConfig().getStringList("Motd");
+	public void saveConfig() {
+		config.set("Motd", motdList);
+		CustomMotdManager.getInstance().saveConfig();
 	}
 }
